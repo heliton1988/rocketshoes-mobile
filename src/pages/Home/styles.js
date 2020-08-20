@@ -6,7 +6,6 @@ import colors from '../../styles/colors';
 export const Container = styled.View`
   flex: 1;
   background: ${colors.secondary};
-  padding-top: 30px;
 `;
 
 export const CardScrollContainer = styled(FlatList).attrs({

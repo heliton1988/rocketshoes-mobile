@@ -1,18 +1,19 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {Container, Logo, BasketContainer} from './styles';
+import {Container, Logo, LogoContainer, BasketContainer} from './styles';
 
-function Header({navegation}) {
-  function handleNavigate() {
-    navegation.navegate('Cart');
-  }
+function Header() {
+  const navigation = useNavigation();
 
   return (
     <Container>
-      <Logo />
+      <LogoContainer onPress={() => navigation.navigate('Home')}>
+        <Logo />
+      </LogoContainer>
 
-      <BasketContainer onPress={handleNavigate}>
+      <BasketContainer onPress={() => navigation.navigate('Cart')}>
         <Icon name="shopping-basket" size={20} color="#fff" />
       </BasketContainer>
     </Container>
