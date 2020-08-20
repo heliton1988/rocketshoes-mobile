@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import numbro from 'numbro';
 
 import api from '../../services/api';
 
@@ -28,9 +29,16 @@ class Home extends React.Component {
   async componentDidMount() {
     const response = await api.get(`products`);
 
-    const products = response.data;
+    const data = response.data.map(product => ({
+      ...product,
+      priceFormatted: numbro(product.price).formatCurrency(
+        'R$',
+        'postfix',
+        'BRL'
+      ),
+    }));
 
-    this.setState({products});
+    this.setState({products: data});
   }
 
   render() {
@@ -46,7 +54,7 @@ class Home extends React.Component {
               <CardBox>
                 <CardImage source={{uri: item.image}} />
                 <CardText>{item.title}</CardText>
-                <CardPrice>R$ {item.price}</CardPrice>
+                <CardPrice>{item.priceFormatted}</CardPrice>
                 <CardButton onPress={() => {}}>
                   <CardQuatityContainer>
                     <Icon name="shopping-cart" size={20} color="#fff" />
