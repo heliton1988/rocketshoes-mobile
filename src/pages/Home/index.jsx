@@ -1,14 +1,25 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-import {Container} from './styles';
+import {Container, Card} from './styles';
 
-function Home() {
-  return (
-    <Container>
-      <Text>Home</Text>
-    </Container>
-  );
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
+
+  render() {
+    const {products} = this.state;
+
+    return (
+      <Container>
+        <Card />
+      </Container>
+    );
+  }
 }
 
 export default Home;
