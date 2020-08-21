@@ -6,6 +6,7 @@ import colors from '../../styles/colors';
 export const Container = styled.View`
   flex: 1;
   background: ${colors.secondary};
+  padding: 10px;
 `;
 
 export const CardScrollContainer = styled(FlatList).attrs({
@@ -20,7 +21,7 @@ export const CardContainer = styled.View`
   margin-right: 15px;
   border-radius: 4px;
 
-  background: #fff;
+  background: ${colors.white};
 
   align-items: center;
 `;
@@ -36,7 +37,7 @@ export const CardText = styled.Text.attrs({
   numberOfLines: 2,
 })`
   width: 186px;
-  color: #333333;
+  color: ${colors.textDescription};
   font-size: 16px;
   margin-top: 10px;
 `;
@@ -44,14 +45,14 @@ export const CardText = styled.Text.attrs({
 export const CardPrice = styled.Text`
   font-size: 21px;
   font-weight: bold;
-  color: #000;
+  color: ${colors.black};
   margin-top: 5px;
 `;
 
 export const CardButton = styled(RectButton)`
   flex-direction: row;
   align-items: center;
-  background: #7159c1;
+  background: ${colors.primary};
   border-radius: 4px;
   margin-top: 14px;
 `;
@@ -61,7 +62,7 @@ export const CardButtonText = styled.Text`
   text-align: center;
   font-weight: bold;
 
-  color: #fff;
+  color: ${colors.white};
 `;
 
 export const CardQuatityContainer = styled.View`
@@ -74,6 +75,6 @@ export const CardQuatityContainer = styled.View`
 
 export const CardQuatity = styled.Text`
   font-size: 14px;
-  color: #fff;
+  color: ${colors.white};
   padding-left: 5px;
 `;

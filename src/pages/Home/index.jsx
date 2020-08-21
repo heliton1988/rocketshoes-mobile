@@ -2,8 +2,6 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import numbro from 'numbro';
 
-import Header from '../../components/Header';
-
 import api from '../../services/api';
 
 import {
@@ -48,8 +46,6 @@ class Home extends React.Component {
 
     return (
       <Container>
-        <Header navegation={this.props} />
-
         <CardScrollContainer
           data={products}
           keyExtractor={product => String(product.id)}
