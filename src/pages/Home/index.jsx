@@ -1,7 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import numbro from 'numbro';
-
+import {formatPrice} from '../../util/format';
 import api from '../../services/api';
 
 import {
@@ -31,11 +30,7 @@ class Home extends React.Component {
 
     const data = response.data.map(product => ({
       ...product,
-      priceFormatted: numbro(product.price).formatCurrency(
-        'R$',
-        'postfix',
-        'BRL'
-      ),
+      priceFormatted: formatPrice(product.price),
     }));
 
     this.setState({products: data});
