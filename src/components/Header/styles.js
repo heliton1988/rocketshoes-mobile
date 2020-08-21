@@ -6,8 +6,6 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  background: #141419;
 `;
 
 export const Logo = styled.Image.attrs({
