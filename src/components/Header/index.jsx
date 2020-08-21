@@ -14,7 +14,6 @@ import {
 } from './styles';
 
 function Header({cartSize}) {
-  console.tron.log(cartSize);
   const navigation = useNavigation();
 
   return (
