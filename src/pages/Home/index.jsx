@@ -1,5 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {connect} from 'react-redux';
+
 import {formatPrice} from '../../util/format';
 import api from '../../services/api';
 
@@ -36,6 +38,15 @@ class Home extends React.Component {
     this.setState({products: data});
   }
 
+  handleAddToCart = product => {
+    const {dispatch} = this.props;
+
+    dispatch({
+      type: 'ADD_TO_CART',
+      product,
+    });
+  };
+
   render() {
     const {products} = this.state;
 
@@ -44,13 +55,13 @@ class Home extends React.Component {
         <CardScrollContainer
           data={products}
           keyExtractor={product => String(product.id)}
-          renderItem={({item}) => (
-            <CardContainer key={item.id}>
+          renderItem={({item: product}) => (
+            <CardContainer key={product.id}>
               <CardBox>
-                <CardImage source={{uri: item.image}} />
-                <CardText>{item.title}</CardText>
-                <CardPrice>{item.priceFormatted}</CardPrice>
-                <CardButton onPress={() => {}}>
+                <CardImage source={{uri: product.image}} />
+                <CardText>{product.title}</CardText>
+                <CardPrice>{product.priceFormatted}</CardPrice>
+                <CardButton onPress={() => this.handleAddToCart(product)}>
                   <CardQuatityContainer>
                     <Icon name="shopping-cart" size={20} color="#fff" />
                     <CardQuatity>1</CardQuatity>
@@ -66,4 +77,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connect()(Home);
