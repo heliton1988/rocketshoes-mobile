@@ -1,6 +1,5 @@
 import React from 'react';
-
-import tenis from '../../assets/tenis.jpg';
+import {connect} from 'react-redux';
 
 import {
   Container,
@@ -21,51 +20,29 @@ import {
   Button,
 } from './styles';
 
-function Cart() {
+function Cart({cart}) {
   return (
     <Container>
       <CartContainer>
-        <CartItem>
-          <CartItemTop>
-            <CartItemTopImage source={tenis} />
-            <CartItemTextContainer>
-              <CartItemText>
-                Tenis muito legal de mais
-                feowiefowehfoweifheoifhefoeifhefoeifheofeihe
-              </CartItemText>
-              <CartItemPrice>R$ 193,99</CartItemPrice>
-            </CartItemTextContainer>
-          </CartItemTop>
-          <CartItemBotton>
-            <CartItemQuatity>
-              <CartItemText>4</CartItemText>
-            </CartItemQuatity>
-            <CartItemSubTotal>
-              <CartItemPrice>R$ 545,89</CartItemPrice>
-            </CartItemSubTotal>
-          </CartItemBotton>
-        </CartItem>
-
-        <CartItem>
-          <CartItemTop>
-            <CartItemTopImage source={tenis} />
-            <CartItemTextContainer>
-              <CartItemText>
-                Tenis muito legal de mais
-                feowiefowehfoweifheoifhefoeifhefoeifheofeihe
-              </CartItemText>
-              <CartItemPrice>R$ 193,99</CartItemPrice>
-            </CartItemTextContainer>
-          </CartItemTop>
-          <CartItemBotton>
-            <CartItemQuatity>
-              <CartItemText>4</CartItemText>
-            </CartItemQuatity>
-            <CartItemSubTotal>
-              <CartItemPrice>R$ 545,89</CartItemPrice>
-            </CartItemSubTotal>
-          </CartItemBotton>
-        </CartItem>
+        {cart.map(product => (
+          <CartItem key={product.id}>
+            <CartItemTop>
+              <CartItemTopImage source={{uri: product.image}} />
+              <CartItemTextContainer>
+                <CartItemText>{product.title}</CartItemText>
+                <CartItemPrice>{product.priceFormatted}</CartItemPrice>
+              </CartItemTextContainer>
+            </CartItemTop>
+            <CartItemBotton>
+              <CartItemQuatity>
+                <CartItemText>4</CartItemText>
+              </CartItemQuatity>
+              <CartItemSubTotal>
+                <CartItemPrice>R$ 545,89</CartItemPrice>
+              </CartItemSubTotal>
+            </CartItemBotton>
+          </CartItem>
+        ))}
 
         <TotalContainer>
           <TotalContainerText>TOTAL</TotalContainerText>
@@ -79,4 +56,8 @@ function Cart() {
   );
 }
 
-export default Cart;
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+export default connect(mapStateToProps)(Cart);

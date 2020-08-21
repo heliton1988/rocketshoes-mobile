@@ -23,10 +23,16 @@ function Header({cartSize}) {
       </LogoContainer>
 
       <BasketContainer onPress={() => navigation.navigate('Cart')}>
-        <Icon name="shopping-basket" size={20} color="#fff" />
-        <BasketCounter>
-          <BasketCounterText>{cartSize}</BasketCounterText>
-        </BasketCounter>
+        {cartSize === 0 ? (
+          <Icon name="shopping-basket" size={20} color="#fff" />
+        ) : (
+          <>
+            <Icon name="shopping-basket" size={20} color="#fff" />
+            <BasketCounter>
+              <BasketCounterText>{cartSize}</BasketCounterText>
+            </BasketCounter>
+          </>
+        )}
       </BasketContainer>
     </Container>
   );
