@@ -14,10 +14,12 @@ export const CartContainer = styled.View`
   border-radius: 4px;
   width: 100%;
   max-width: 360px;
-  max-height: 600px;
+  max-height: 620px;
   margin-top: 20px;
   padding: 10px;
 `;
+
+export const ScrollContainer = styled.ScrollView``;
 
 export const CartItem = styled.View`
   margin-left: 5px;

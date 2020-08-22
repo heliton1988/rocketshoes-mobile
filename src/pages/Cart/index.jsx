@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {
   Container,
   CartContainer,
+  ScrollContainer,
   CartItem,
   CartItemTop,
   CartItemTopImage,
@@ -24,25 +25,27 @@ function Cart({cart}) {
   return (
     <Container>
       <CartContainer>
-        {cart.map(product => (
-          <CartItem key={product.id}>
-            <CartItemTop>
-              <CartItemTopImage source={{uri: product.image}} />
-              <CartItemTextContainer>
-                <CartItemText>{product.title}</CartItemText>
-                <CartItemPrice>{product.priceFormatted}</CartItemPrice>
-              </CartItemTextContainer>
-            </CartItemTop>
-            <CartItemBotton>
-              <CartItemQuatity>
-                <CartItemText>4</CartItemText>
-              </CartItemQuatity>
-              <CartItemSubTotal>
-                <CartItemPrice>R$ 545,89</CartItemPrice>
-              </CartItemSubTotal>
-            </CartItemBotton>
-          </CartItem>
-        ))}
+        <ScrollContainer>
+          {cart.map(product => (
+            <CartItem key={product.id}>
+              <CartItemTop>
+                <CartItemTopImage source={{uri: product.image}} />
+                <CartItemTextContainer>
+                  <CartItemText>{product.title}</CartItemText>
+                  <CartItemPrice>{product.priceFormatted}</CartItemPrice>
+                </CartItemTextContainer>
+              </CartItemTop>
+              <CartItemBotton>
+                <CartItemQuatity>
+                  <CartItemText>{product.amount}</CartItemText>
+                </CartItemQuatity>
+                <CartItemSubTotal>
+                  <CartItemPrice>R$ 545,89</CartItemPrice>
+                </CartItemSubTotal>
+              </CartItemBotton>
+            </CartItem>
+          ))}
+        </ScrollContainer>
 
         <TotalContainer>
           <TotalContainerText>TOTAL</TotalContainerText>
