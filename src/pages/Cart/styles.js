@@ -30,7 +30,16 @@ export const CartItem = styled.View`
 export const CartItemTop = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
+`;
+
+export const CartItemDelete = styled(RectButton)`
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  top: -15px;
 `;
 
 export const CartItemTopImage = styled.Image`
