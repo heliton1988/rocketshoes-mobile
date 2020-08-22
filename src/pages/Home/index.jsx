@@ -1,8 +1,12 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import numbro from 'numbro';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
+import {formatPrice} from '../../util/format';
 import api from '../../services/api';
+
+import * as CartActions from '../../store/modules/cart/actions';
 
 import {
   Container,
@@ -31,34 +35,37 @@ class Home extends React.Component {
 
     const data = response.data.map(product => ({
       ...product,
-      priceFormatted: numbro(product.price).formatCurrency(
-        'R$',
-        'postfix',
-        'BRL'
-      ),
+      priceFormatted: formatPrice(product.price),
     }));
 
     this.setState({products: data});
   }
 
+  handleAddToCart = product => {
+    const {addToCart} = this.props;
+
+    addToCart(product);
+  };
+
   render() {
     const {products} = this.state;
+    const {amount} = this.props;
 
     return (
       <Container>
         <CardScrollContainer
           data={products}
           keyExtractor={product => String(product.id)}
-          renderItem={({item}) => (
-            <CardContainer key={item.id}>
+          renderItem={({item: product}) => (
+            <CardContainer key={product.id}>
               <CardBox>
-                <CardImage source={{uri: item.image}} />
-                <CardText>{item.title}</CardText>
-                <CardPrice>{item.priceFormatted}</CardPrice>
-                <CardButton onPress={() => {}}>
+                <CardImage source={{uri: product.image}} />
+                <CardText>{product.title}</CardText>
+                <CardPrice>{product.priceFormatted}</CardPrice>
+                <CardButton onPress={() => this.handleAddToCart(product)}>
                   <CardQuatityContainer>
                     <Icon name="shopping-cart" size={20} color="#fff" />
-                    <CardQuatity>1</CardQuatity>
+                    <CardQuatity>{amount[product.id] || 0}</CardQuatity>
                   </CardQuatityContainer>
                   <CardButtonText>ADICIONAR</CardButtonText>
                 </CardButton>
@@ -71,4 +78,15 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+
+    return amount;
+  }, {}),
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

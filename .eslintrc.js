@@ -25,8 +25,9 @@ module.exports = {
         extensions: ['.jsx', '.js'],
       },
     ],
+    'no-param-reassign': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'no-console': 'off',
+    'no-console': ['error', {allow: ['tron']}],
   },
 };

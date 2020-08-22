@@ -1,10 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-import tenis from '../../assets/tenis.jpg';
+import {formatPrice} from '../../util/format';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import {
   Container,
   CartContainer,
+  ScrollContainer,
   CartItem,
   CartItemTop,
   CartItemTopImage,
@@ -21,55 +25,35 @@ import {
   Button,
 } from './styles';
 
-function Cart() {
+function Cart({cart, total}) {
   return (
     <Container>
       <CartContainer>
-        <CartItem>
-          <CartItemTop>
-            <CartItemTopImage source={tenis} />
-            <CartItemTextContainer>
-              <CartItemText>
-                Tenis muito legal de mais
-                feowiefowehfoweifheoifhefoeifhefoeifheofeihe
-              </CartItemText>
-              <CartItemPrice>R$ 193,99</CartItemPrice>
-            </CartItemTextContainer>
-          </CartItemTop>
-          <CartItemBotton>
-            <CartItemQuatity>
-              <CartItemText>4</CartItemText>
-            </CartItemQuatity>
-            <CartItemSubTotal>
-              <CartItemPrice>R$ 545,89</CartItemPrice>
-            </CartItemSubTotal>
-          </CartItemBotton>
-        </CartItem>
-
-        <CartItem>
-          <CartItemTop>
-            <CartItemTopImage source={tenis} />
-            <CartItemTextContainer>
-              <CartItemText>
-                Tenis muito legal de mais
-                feowiefowehfoweifheoifhefoeifhefoeifheofeihe
-              </CartItemText>
-              <CartItemPrice>R$ 193,99</CartItemPrice>
-            </CartItemTextContainer>
-          </CartItemTop>
-          <CartItemBotton>
-            <CartItemQuatity>
-              <CartItemText>4</CartItemText>
-            </CartItemQuatity>
-            <CartItemSubTotal>
-              <CartItemPrice>R$ 545,89</CartItemPrice>
-            </CartItemSubTotal>
-          </CartItemBotton>
-        </CartItem>
+        <ScrollContainer>
+          {cart.map(product => (
+            <CartItem key={product.id}>
+              <CartItemTop>
+                <CartItemTopImage source={{uri: product.image}} />
+                <CartItemTextContainer>
+                  <CartItemText>{product.title}</CartItemText>
+                  <CartItemPrice>{product.priceFormatted}</CartItemPrice>
+                </CartItemTextContainer>
+              </CartItemTop>
+              <CartItemBotton>
+                <CartItemQuatity>
+                  <CartItemText>{product.amount}</CartItemText>
+                </CartItemQuatity>
+                <CartItemSubTotal>
+                  <CartItemPrice>{product.subtotal}</CartItemPrice>
+                </CartItemSubTotal>
+              </CartItemBotton>
+            </CartItem>
+          ))}
+        </ScrollContainer>
 
         <TotalContainer>
           <TotalContainerText>TOTAL</TotalContainerText>
-          <TotalContainerPrice>R$ 987,00</TotalContainerPrice>
+          <TotalContainerPrice>{total}</TotalContainerPrice>
           <Button>
             <ButtonText>FINALIZAR PEDIDO</ButtonText>
           </Button>
@@ -79,4 +63,19 @@ function Cart() {
   );
 }
 
-export default Cart;
+const mapStateToProps = state => ({
+  cart: state.cart.map(product => ({
+    ...product,
+    subtotal: formatPrice(product.price * product.amount),
+  })),
+  total: formatPrice(
+    state.cart.reduce((total, product) => {
+      return total + product.price * product.amount;
+    }, 0)
+  ),
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
