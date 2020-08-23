@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {formatPrice} from '../../util/format';
 import * as CartActions from '../../store/modules/cart/actions';
@@ -11,6 +12,7 @@ import {
   ScrollContainer,
   CartItem,
   CartItemTop,
+  CartItemDelete,
   CartItemTopImage,
   CartItemTextContainer,
   CartItemText,
@@ -25,7 +27,7 @@ import {
   Button,
 } from './styles';
 
-function Cart({cart, total}) {
+function Cart({cart, total, removeFromCart}) {
   return (
     <Container>
       <CartContainer>
@@ -38,6 +40,9 @@ function Cart({cart, total}) {
                   <CartItemText>{product.title}</CartItemText>
                   <CartItemPrice>{product.priceFormatted}</CartItemPrice>
                 </CartItemTextContainer>
+                <CartItemDelete onPress={() => removeFromCart(product.id)}>
+                  <Icon name="delete" size={20} color="#EEEEEE" />
+                </CartItemDelete>
               </CartItemTop>
               <CartItemBotton>
                 <CartItemQuatity>
