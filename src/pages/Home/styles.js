@@ -9,6 +9,14 @@ export const Container = styled.View`
   padding: 15px;
 `;
 
+export const ScrollContainer = styled.ScrollView``;
+
+export const Tittle = styled.Text`
+  color: ${colors.gray3};
+  margin-top: 20px;
+  font-size: 15px;
+`;
+
 export const CardScrollContainer = styled(FlatList).attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,

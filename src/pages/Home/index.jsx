@@ -10,6 +10,8 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 import {
   Container,
+  Tittle,
+  ScrollContainer,
   CardScrollContainer,
   CardContainer,
   CardBox,
@@ -53,26 +55,76 @@ class Home extends React.Component {
 
     return (
       <Container>
-        <CardScrollContainer
-          data={products}
-          keyExtractor={product => String(product.id)}
-          renderItem={({item: product}) => (
-            <CardContainer key={product.id}>
-              <CardBox>
-                <CardImage source={{uri: product.image}} />
-                <CardText>{product.title}</CardText>
-                <CardPrice>{product.priceFormatted}</CardPrice>
-                <CardButton onPress={() => this.handleAddToCart(product.id)}>
-                  <CardQuatityContainer>
-                    <Icon name="shopping-cart" size={20} color="#fff" />
-                    <CardQuatity>{amount[product.id] || 0}</CardQuatity>
-                  </CardQuatityContainer>
-                  <CardButtonText>ADICIONAR</CardButtonText>
-                </CardButton>
-              </CardBox>
-            </CardContainer>
-          )}
-        />
+        <ScrollContainer>
+          <Tittle>RUNNING</Tittle>
+
+          <CardScrollContainer
+            data={products}
+            keyExtractor={product => String(product.id)}
+            renderItem={({item: product}) => (
+              <CardContainer key={product.id}>
+                <CardBox>
+                  <CardImage source={{uri: product.image}} />
+                  <CardText>{product.title}</CardText>
+                  <CardPrice>{product.priceFormatted}</CardPrice>
+                  <CardButton onPress={() => this.handleAddToCart(product.id)}>
+                    <CardQuatityContainer>
+                      <Icon name="shopping-cart" size={20} color="#fff" />
+                      <CardQuatity>{amount[product.id] || 0}</CardQuatity>
+                    </CardQuatityContainer>
+                    <CardButtonText>ADICIONAR</CardButtonText>
+                  </CardButton>
+                </CardBox>
+              </CardContainer>
+            )}
+          />
+
+          <Tittle>CAMINHADA</Tittle>
+
+          <CardScrollContainer
+            data={products}
+            keyExtractor={product => String(product.id)}
+            renderItem={({item: product}) => (
+              <CardContainer key={product.id}>
+                <CardBox>
+                  <CardImage source={{uri: product.image}} />
+                  <CardText>{product.title}</CardText>
+                  <CardPrice>{product.priceFormatted}</CardPrice>
+                  <CardButton onPress={() => this.handleAddToCart(product.id)}>
+                    <CardQuatityContainer>
+                      <Icon name="shopping-cart" size={20} color="#fff" />
+                      <CardQuatity>{amount[product.id] || 0}</CardQuatity>
+                    </CardQuatityContainer>
+                    <CardButtonText>ADICIONAR</CardButtonText>
+                  </CardButton>
+                </CardBox>
+              </CardContainer>
+            )}
+          />
+
+          <Tittle>TRILHA</Tittle>
+
+          <CardScrollContainer
+            data={products}
+            keyExtractor={product => String(product.id)}
+            renderItem={({item: product}) => (
+              <CardContainer key={product.id}>
+                <CardBox>
+                  <CardImage source={{uri: product.image}} />
+                  <CardText>{product.title}</CardText>
+                  <CardPrice>{product.priceFormatted}</CardPrice>
+                  <CardButton onPress={() => this.handleAddToCart(product.id)}>
+                    <CardQuatityContainer>
+                      <Icon name="shopping-cart" size={20} color="#fff" />
+                      <CardQuatity>{amount[product.id] || 0}</CardQuatity>
+                    </CardQuatityContainer>
+                    <CardButtonText>ADICIONAR</CardButtonText>
+                  </CardButton>
+                </CardBox>
+              </CardContainer>
+            )}
+          />
+        </ScrollContainer>
       </Container>
     );
   }
