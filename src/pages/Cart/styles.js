@@ -35,7 +35,7 @@ export const CartItemTop = styled.View`
 `;
 
 export const CartItemDelete = styled(RectButton)`
-  width: 28px;
+  width: 35px;
   height: 28px;
   align-items: center;
   justify-content: center;
@@ -71,20 +71,34 @@ export const CartItemBotton = styled.View`
   justify-content: space-between;
   background: ${colors.lightGray};
   border-radius: 4px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-right: 10px;
-  padding-left: 35px;
+`;
+
+export const ButtonContainer = styled.View`
+  width: 130px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+`;
+
+export const ButtonQunatity = styled(RectButton)`
+  width: 30px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const CartItemQuatity = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: 56px;
   border-radius: 4px;
-  padding-left: 12px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   background: ${colors.white};
 `;
 

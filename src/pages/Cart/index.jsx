@@ -18,6 +18,8 @@ import {
   CartItemText,
   CartItemPrice,
   CartItemBotton,
+  ButtonQunatity,
+  ButtonContainer,
   CartItemQuatity,
   CartItemSubTotal,
   TotalContainer,
@@ -27,7 +29,15 @@ import {
   Button,
 } from './styles';
 
-function Cart({cart, total, removeFromCart}) {
+function Cart({cart, total, updateAmount, removeFromCart}) {
+  function increment(product) {
+    updateAmount(product.id, product.amount + 1);
+  }
+
+  function decrement(product) {
+    updateAmount(product.id, product.amount - 1);
+  }
+
   return (
     <Container>
       <CartContainer>
@@ -45,9 +55,22 @@ function Cart({cart, total, removeFromCart}) {
                 </CartItemDelete>
               </CartItemTop>
               <CartItemBotton>
-                <CartItemQuatity>
-                  <CartItemText>{product.amount}</CartItemText>
-                </CartItemQuatity>
+                <ButtonContainer>
+                  <ButtonQunatity onPress={() => decrement(product)}>
+                    <Icon
+                      name="remove-circle-outline"
+                      size={20}
+                      color="#7159c1"
+                    />
+                  </ButtonQunatity>
+                  <CartItemQuatity>
+                    <CartItemText>{product.amount}</CartItemText>
+                  </CartItemQuatity>
+
+                  <ButtonQunatity onPress={() => increment(product)}>
+                    <Icon name="add-circle-outline" size={20} color="#7159c1" />
+                  </ButtonQunatity>
+                </ButtonContainer>
                 <CartItemSubTotal>
                   <CartItemPrice>{product.subtotal}</CartItemPrice>
                 </CartItemSubTotal>
