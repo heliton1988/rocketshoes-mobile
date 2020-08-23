@@ -6,7 +6,7 @@ import sadIcon from '../../assets/very-sad.png';
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  background: ${colors.secondary};
+  background: ${colors.dark3};
   padding: 10px;
 `;
 
@@ -57,20 +57,20 @@ export const CartItemText = styled.Text.attrs({
   numberOfLines: 2,
 })`
   font-size: 14px;
-  color: ${colors.textDescription};
+  color: ${colors.gray1};
 `;
 
 export const CartItemPrice = styled.Text`
   font-weight: bold;
   font-size: 16px;
-  color: ${colors.black};
+  color: ${colors.dark1};
 `;
 
 export const CartItemBotton = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background: ${colors.lightGray};
+  background: ${colors.gray4};
   border-radius: 4px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -113,21 +113,21 @@ export const TotalContainer = styled.View`
 export const TotalContainerText = styled.Text`
   font-size: 16px;
   font-weight: bold;
-  color: ${colors.darkGray};
+  color: ${colors.gray2};
 `;
 
 export const TotalContainerPrice = styled.Text`
   margin-top: 5px;
   font-size: 30px;
   font-weight: bold;
-  color: ${colors.black};
+  color: ${colors.dark1};
 `;
 
 export const Button = styled(RectButton)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background: ${colors.primary};
+  background: ${colors.orange};
   width: 100%;
   border-radius: 4px;
   padding: 13px;

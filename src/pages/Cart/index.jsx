@@ -64,7 +64,7 @@ function Cart({cart, total, updateAmount, removeFromCart}) {
                     <Icon
                       name="remove-circle-outline"
                       size={20}
-                      color="#7159c1"
+                      color="#FF500F"
                     />
                   </ButtonQunatity>
                   <CartItemQuatity>
@@ -72,7 +72,7 @@ function Cart({cart, total, updateAmount, removeFromCart}) {
                   </CartItemQuatity>
 
                   <ButtonQunatity onPress={() => increment(product)}>
-                    <Icon name="add-circle-outline" size={20} color="#7159c1" />
+                    <Icon name="add-circle-outline" size={20} color="#FF500F" />
                   </ButtonQunatity>
                 </ButtonContainer>
                 <CartItemSubTotal>

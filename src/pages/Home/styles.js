@@ -5,8 +5,8 @@ import colors from '../../styles/colors';
 
 export const Container = styled.View`
   flex: 1;
-  background: ${colors.secondary};
-  padding: 10px;
+  background: ${colors.dark3};
+  padding: 15px;
 `;
 
 export const CardScrollContainer = styled(FlatList).attrs({
@@ -37,7 +37,7 @@ export const CardText = styled.Text.attrs({
   numberOfLines: 2,
 })`
   width: 186px;
-  color: ${colors.textDescription};
+  color: ${colors.gray1};
   font-size: 16px;
   margin-top: 10px;
 `;
@@ -45,14 +45,14 @@ export const CardText = styled.Text.attrs({
 export const CardPrice = styled.Text`
   font-size: 21px;
   font-weight: bold;
-  color: ${colors.black};
+  color: ${colors.dark1};
   margin-top: 5px;
 `;
 
 export const CardButton = styled(RectButton)`
   flex-direction: row;
   align-items: center;
-  background: ${colors.primary};
+  background: ${colors.orange};
   border-radius: 4px;
   margin-top: 14px;
 `;
