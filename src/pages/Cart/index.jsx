@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import colors from '../../styles/colors';
 import {formatPrice} from '../../util/format';
 import * as CartActions from '../../store/modules/cart/actions';
 
@@ -55,7 +56,7 @@ function Cart({cart, total, updateAmountRequest, removeFromCart}) {
                   <CartItemPrice>{product.priceFormatted}</CartItemPrice>
                 </CartItemTextContainer>
                 <CartItemDelete onPress={() => removeFromCart(product.id)}>
-                  <Icon name="delete" size={20} color="#EEEEEE" />
+                  <Icon name="delete" size={20} color={colors.orange} />
                 </CartItemDelete>
               </CartItemTop>
               <CartItemBotton>
@@ -64,7 +65,7 @@ function Cart({cart, total, updateAmountRequest, removeFromCart}) {
                     <Icon
                       name="remove-circle-outline"
                       size={20}
-                      color="#FF500F"
+                      color={colors.orange}
                     />
                   </ButtonQunatity>
                   <CartItemQuatity>
@@ -72,7 +73,11 @@ function Cart({cart, total, updateAmountRequest, removeFromCart}) {
                   </CartItemQuatity>
 
                   <ButtonQunatity onPress={() => increment(product)}>
-                    <Icon name="add-circle-outline" size={20} color="#FF500F" />
+                    <Icon
+                      name="add-circle-outline"
+                      size={20}
+                      color={colors.orange}
+                    />
                   </ButtonQunatity>
                 </ButtonContainer>
                 <CartItemSubTotal>

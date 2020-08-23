@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {RectButton} from 'react-native-gesture-handler';
+
 import colors from '../../styles/colors';
 import sadIcon from '../../assets/very-sad.png';
 
@@ -40,7 +41,6 @@ export const CartItemDelete = styled(RectButton)`
   height: 28px;
   align-items: center;
   justify-content: center;
-  top: -15px;
 `;
 
 export const CartItemTopImage = styled.Image`
@@ -82,7 +82,6 @@ export const ButtonContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-left: 20px;
 `;
 
 export const ButtonQunatity = styled(RectButton)`

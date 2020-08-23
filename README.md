@@ -29,8 +29,6 @@
   <img src="./.github/logo.png">
 </h3>
 
----
-
 ## :pencil: Sobre
 
 A propósta desse desafio foi migrar o projeto de e-commerce criado na web para dispositivos móveis utilizando React native. Mantendo as mesmas funcionalidades tanto no web quanto no mobile<br />
@@ -88,7 +86,5 @@ $ yarn dev:server
 ## :page_facing_up: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/rocketseat-education/bootcamp-gostack-desafio-07/blob/master/LICENSE.md) para mais detalhes.
-
----
 
 Feito com 💙 by [Héliton Oliveira](https://www.linkedin.com/in/helitonoliveira/) 👋 !!!

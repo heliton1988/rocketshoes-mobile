@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import colors from '../../styles/colors';
 import {formatPrice} from '../../util/format';
 import api from '../../services/api';
 
@@ -69,7 +70,11 @@ class Home extends React.Component {
                   <CardPrice>{product.priceFormatted}</CardPrice>
                   <CardButton onPress={() => this.handleAddToCart(product.id)}>
                     <CardQuatityContainer>
-                      <Icon name="shopping-cart" size={20} color="#fff" />
+                      <Icon
+                        name="shopping-cart"
+                        size={20}
+                        color={colors.white}
+                      />
                       <CardQuatity>{amount[product.id] || 0}</CardQuatity>
                     </CardQuatityContainer>
                     <CardButtonText>ADICIONAR</CardButtonText>
@@ -92,7 +97,11 @@ class Home extends React.Component {
                   <CardPrice>{product.priceFormatted}</CardPrice>
                   <CardButton onPress={() => this.handleAddToCart(product.id)}>
                     <CardQuatityContainer>
-                      <Icon name="shopping-cart" size={20} color="#fff" />
+                      <Icon
+                        name="shopping-cart"
+                        size={20}
+                        color={colors.white}
+                      />
                       <CardQuatity>{amount[product.id] || 0}</CardQuatity>
                     </CardQuatityContainer>
                     <CardButtonText>ADICIONAR</CardButtonText>
@@ -115,7 +124,11 @@ class Home extends React.Component {
                   <CardPrice>{product.priceFormatted}</CardPrice>
                   <CardButton onPress={() => this.handleAddToCart(product.id)}>
                     <CardQuatityContainer>
-                      <Icon name="shopping-cart" size={20} color="#fff" />
+                      <Icon
+                        name="shopping-cart"
+                        size={20}
+                        color={colors.white}
+                      />
                       <CardQuatity>{amount[product.id] || 0}</CardQuatity>
                     </CardQuatityContainer>
                     <CardButtonText>ADICIONAR</CardButtonText>
