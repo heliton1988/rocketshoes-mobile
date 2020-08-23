@@ -33,7 +33,7 @@
 
 ## :pencil: Sobre
 
-A propósta desse desafio foi migrar o projeto de e-commerce criado na web para dispositivos móveis utilizando React native. Mantendo as mesmas funcionalidades tanto no web quanto no mobile.<br />
+A propósta desse desafio foi migrar o projeto de e-commerce criado na web para dispositivos móveis utilizando React native. Mantendo as mesmas funcionalidades tanto no web quanto no mobile<br />
 
 Click aqui ⬇<br />
 [Projeto Web](https://github.com/heliton1988/rocketshoes)
