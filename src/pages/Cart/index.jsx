@@ -31,15 +31,15 @@ import {
   LogoSad,
 } from './styles';
 
-function Cart({cart, total, updateAmount, removeFromCart}) {
+function Cart({cart, total, updateAmountRequest, removeFromCart}) {
   const navigation = useNavigation();
 
   function increment(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
 
   function decrement(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
 
   return (
