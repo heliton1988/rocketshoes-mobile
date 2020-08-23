@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {formatPrice} from '../../util/format';
@@ -27,9 +28,12 @@ import {
   TotalContainerPrice,
   ButtonText,
   Button,
+  LogoSad,
 } from './styles';
 
 function Cart({cart, total, updateAmount, removeFromCart}) {
+  const navigation = useNavigation();
+
   function increment(product) {
     updateAmount(product.id, product.amount + 1);
   }
@@ -79,13 +83,25 @@ function Cart({cart, total, updateAmount, removeFromCart}) {
           ))}
         </ScrollContainer>
 
-        <TotalContainer>
-          <TotalContainerText>TOTAL</TotalContainerText>
-          <TotalContainerPrice>{total}</TotalContainerPrice>
-          <Button>
-            <ButtonText>FINALIZAR PEDIDO</ButtonText>
-          </Button>
-        </TotalContainer>
+        {cart.length !== 0 ? (
+          <TotalContainer>
+            <TotalContainerText>TOTAL</TotalContainerText>
+            <TotalContainerPrice>{total}</TotalContainerPrice>
+            <Button>
+              <ButtonText>FINALIZAR PEDIDO</ButtonText>
+            </Button>
+          </TotalContainer>
+        ) : (
+          <TotalContainer>
+            <LogoSad />
+            <TotalContainerText>
+              OPS! SEU CARRINHO ESTÁ VAZIO
+            </TotalContainerText>
+            <Button onPress={() => navigation.navigate('Home')}>
+              <ButtonText>VOLTAR PARA HOME</ButtonText>
+            </Button>
+          </TotalContainer>
+        )}
       </CartContainer>
     </Container>
   );

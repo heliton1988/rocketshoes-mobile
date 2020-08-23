@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import {RectButton} from 'react-native-gesture-handler';
 import colors from '../../styles/colors';
+import sadIcon from '../../assets/very-sad.png';
 
 export const Container = styled.View`
   flex: 1;
@@ -137,4 +138,14 @@ export const ButtonText = styled.Text`
   font-size: 14px;
   font-weight: bold;
   color: ${colors.white};
+`;
+
+export const LogoSad = styled.Image.attrs({
+  source: sadIcon,
+  resizeMode: 'cover',
+})`
+  width: 60px;
+  height: 60px;
+  opacity: 0.5;
+  margin-bottom: 20px;
 `;
