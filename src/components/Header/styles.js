@@ -34,6 +34,7 @@ export const BasketCounter = styled.View`
   width: 16px;
   height: 16px;
   border-radius: 8px;
+  border: 1px solid ${colors.dark1};
   background: ${colors.red};
   align-items: center;
   justify-content: center;
